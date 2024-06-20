@@ -110,9 +110,6 @@ public class Variable_0619 {
 		
 		
 		
-		
-		
-		
 	}
 	
 }
