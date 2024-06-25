@@ -6,7 +6,7 @@ public class ForWhile04 {
 
 		// 1~9단까지 구구단을 모두 출력해 보세요.
 		
-		// while 문 활용
+		// for/while 문 활용
 		System.out.println("====== [ while문 ] 구구단 ==========");
 	
 		
@@ -31,6 +31,23 @@ public class ForWhile04 {
 		}
 		System.out.println();
 		}
+		
+		
+		// while/while 문 활용
+		
+		int dan = 1;
+		
+		while(dan < 10) {
+			System.out.println("====== [ while문 ] " + dan + " 단 ==========");
+		int k = 1;
+		while (k <= 9) {
+			System.out.println(dan + "x" + k + "=" + dan*k);
+			k++;
+			} 
+		dan++;
+		}
+		
+		System.out.println();
 		
 		
 	}
