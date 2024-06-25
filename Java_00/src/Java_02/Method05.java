@@ -42,8 +42,6 @@ public class Method05 {
 				result = result + i;
 			}
 			return result;
-			
-			
 		}
 
 
