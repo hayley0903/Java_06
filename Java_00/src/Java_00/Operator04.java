@@ -46,8 +46,7 @@ public class Operator04 {
 		*/
 
 		
-		
-		
+	
 		
 		/*
 		 * [ 홀짝 감별기 ]
