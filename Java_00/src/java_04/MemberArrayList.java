@@ -51,7 +51,7 @@ public class MemberArrayList {
 
 		public static void memberListSelect(ArrayList<String> args) {
 		
-		for (int i = 0; i < args.size; i++) { 
+		for (int i = 0; i < args.size(); i++) { 
 			
 			System.out.println("회원" + (i+1) + "이름" + args.get(i));
 		}

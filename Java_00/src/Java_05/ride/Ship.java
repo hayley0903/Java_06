@@ -1,0 +1,10 @@
+package Java_05.ride;
+
+public class Ship extends Ride {
+	
+	public void move() {
+		System.out.println("배를 탔어요");
+	}
+	
+
+}
