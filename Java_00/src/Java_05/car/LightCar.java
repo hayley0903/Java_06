@@ -9,7 +9,13 @@ public class LightCar extends Car {
 		
 	}
 	
-
+	//생성자 추가
+	public LightCar (String model, int wheel, int seat, String fuel, double discount) {
+		super(model, wheel, seat, fuel); //Car의 인자를 받아옴
+		this.discount = discount;
+			
+		}
+		
 	public String carInfo() {
 		
 		String result = "";
