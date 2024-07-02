@@ -41,9 +41,11 @@ public class MemberService {
 				break;
 			case 2 : 
 				displayMsg("2. 회원 정보 수정");
+				updateMember();
 				break;
 			case 3 : 
 				displayMsg("3. 회원 정보 삭제");
+				removeMember();
 				break;
 			case 4 : 
 				displayMsg("4. 회원 정보 출력(이름)");
@@ -86,7 +88,7 @@ public class MemberService {
 		System.out.println(msg);	
 	}
 
-	//01.insertMembert 메서도
+	//01.insertMembert 메서드
 	public void insertMember() {
 		//		private String memberId;	// 회원 아이디
 		//		private String memberPw;	// 회원 비밀번호
@@ -124,27 +126,82 @@ public class MemberService {
 		mDAO.insertMember(member);
 
 	}
+	
+	//02.회원 정보 수정
+	public void updateMember() {
+		List<Member> members = mDAO.findMember();
 
-	//05.회원 전체 정보 출력
-	public void printAllMembers() {
-		List<Member> members = mDAO.findAllMember();
-
-
-		for(int i = 0; i < members.size(); i++) {
-			//members라는 리스트에서 회원정보를 가져오고
+		
+		System.out.println("수정할 회원 아이디를 입력하세요");
+		String findId = sc.next();
+		
+		//아이디가 일치할때 수정 
+		boolean flag = false;
+		
+		for (int i = 0; i<members.size(); i++) {
 			Member member = members.get(i);
-
-			//회원정보를 get(i)로 받는다
-			displayMsg("회원아이디" + member.getMemberId());
-			displayMsg("비밀번호" + member.getMemberPw());
-			displayMsg("이름" + member.getMemberName());
-			displayMsg("이메일" + member.getEmail());
-			displayMsg("연락처" + member.getPhone());
-			displayMsg("===========================");
-
+		
+			
+			if (findId.equals(member.getMemberId())) {
+				System.out.println(member.getMemberName() + "님의 정보를 수정해주세요");
+				
+				System.out.println("비밀번호를 입력해주세요. : ");
+				member.setMemberPw(sc.next());
+				
+				System.out.println("이메일을 입력해주세요. : ");
+				member.setEmail(sc.next());
+				
+				System.out.println("연락처를 입력해주세요. : ");
+				member.setPhone(sc.next());
+				
+				flag = true;
+				break;
+			}
 		}
-	} 
+		
+		if (flag==false) {
+			System.out.println("회원아이디가 없음");
+		}
+		
+	}
 
+	//03.회원 정보 삭제
+	
+	public void removeMember() {
+		
+		//현재 구성되어 있는 member리스트 가져오기
+		//mDAO에 반환을 해주는 메소드 호출
+		List<Member> members = mDAO.findMember();
+		
+		System.out.println("삭제할 회원 아이디를 입력하세요");
+		String findId = sc.next();
+		
+		boolean flag = false;
+		
+		
+		
+		for(int i = 0; i < members.size(); i++) {
+			Member member = members.get(i);
+			
+			if(findId.equals(member.getMemberId())) {
+				
+			
+				mDAO.deleteMember(member);
+				displayMsg("삭제 완료");
+			
+				flag = true;
+				break;
+			}
+			
+		}
+		
+		if (flag==false) {
+			System.out.println("회원아이디가 없음");
+		}
+		
+	}
+	
+	
 	//04.회원 정보 출력 (각각)
 	public void printMember() {
 
@@ -179,6 +236,29 @@ public class MemberService {
 
 
 	} 
+
+	//05.회원 전체 정보 출력
+	public void printAllMembers() {
+		List<Member> members = mDAO.findAllMember();
+
+
+		for(int i = 0; i < members.size(); i++) {
+			//members라는 리스트에서 회원정보를 가져오고
+			Member member = members.get(i);
+
+			//회원정보를 get(i)로 받는다
+			displayMsg("회원아이디" + member.getMemberId());
+			displayMsg("비밀번호" + member.getMemberPw());
+			displayMsg("이름" + member.getMemberName());
+			displayMsg("이메일" + member.getEmail());
+			displayMsg("연락처" + member.getPhone());
+			displayMsg("===========================");
+
+		}
+	} 
+
+
+	
 
 
 

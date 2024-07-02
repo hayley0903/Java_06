@@ -21,7 +21,6 @@ public class MemberDAO {
 	//저장
 	public void insertMember(Member member) {
 		members.add(member);
-
 	}
 
 
@@ -29,14 +28,12 @@ public class MemberDAO {
 	public void updateMember(Member member) {
 		int index = 0;
 		members.set(index, member);
-
 	}
 
 
 	//삭제
 	public void deleteMember(Member member) {
 		members.remove(member);
-
 	}
 
 
